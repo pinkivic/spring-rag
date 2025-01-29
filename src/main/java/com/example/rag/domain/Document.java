@@ -4,44 +4,103 @@ import jakarta.persistence.*;
 
 @Entity
 public class Document {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(nullable = false)
     private Long id;
 
     private String title;
+
     private String description;
-    private String contentType;
+
+    private String author;
+
     private String publisher;
+
     private String publishedDate;
 
-    // Constructors
-    public Document() {}
+    private String contentType;
 
-    public Document(String title, String description, String contentType, String publisher, String publishedDate) {
+    private String content;
+
+    public Document() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
-        this.contentType = contentType;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
     }
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getContentType() {
+        return contentType;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getContent() {
+        return content;
+    }
 
-    public String getContentType() { return contentType; }
-    public void setContentType(String contentType) { this.contentType = contentType; }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    public String getPublisher() { return publisher; }
-    public void setPublisher(String publisher) { this.publisher = publisher; }
-
-    public String getPublishedDate() { return publishedDate; }
-    public void setPublishedDate(String publishedDate) { this.publishedDate = publishedDate; }
+    @Override
+    public String toString() {
+        return "Document{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", publishedDate='" + publishedDate + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
